@@ -18,7 +18,7 @@ void Menu_calculator_ob_drob()
 		cout << "6)Сокращение дробей" << endl;
 		cout << "7)Представление в виде десятичной дроби" << endl;
 		cout << "0)Выход" << endl;
-		cout << "Выберите номер задания: ";
+		cout << "\nВыберите номер задания: ";
 		unsigned short a;
 
 		cin >> a;
