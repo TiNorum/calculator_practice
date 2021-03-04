@@ -294,35 +294,22 @@ void determinant()
 
 //-------------------------
 
-void PrintMatrix(float ar[][10], int n, int m)
+void inverse_matrix()
 {
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < m; j++) {
-			cout << ar[i][j] << "  ";
-		}
-		cout << endl;
-	}
-	return;
-}
+	//float matrix[10][10];
+	int matrixSize = 3;
 
-// Функция для печати обратной матрицы
+	//matrixEnter(matrix, matrixColumnSize, matrixLineSize);
 
-void PrintInverse(float ar[][10], int n, int m)
-{
-	for (int i = 0; i < n; i++) {
-		for (int j = n; j < m; j++) {
-			cout << ar[i][j] << " ";
-		}
-		cout << endl;
-	}
-	return;
-}
+	//cout << "\nВведите размер матрицы\n";
+	//cin >> order;
 
+	float matrix[10][10] = { 
+		{ 5, 7, 9 },
+		{ 4, 3, 8 },
+		{ 7, 5, 6 }
+	};
 
-// Функция для выполнения обратной операции над матрицей.
-
-void InverseOfMatrix(float matrix[][10], int order)
-{
 	// Матричная декларация.
 
 	float temp;
@@ -330,20 +317,24 @@ void InverseOfMatrix(float matrix[][10], int order)
 	// PrintMatrix функция для печати элемента
 	// матрицы.
 
-	printf("МАТРИЦА\n");
-
-	PrintMatrix(matrix, order, order);
+	cout << "МАТРИЦА\n";
+	for (int i = 0; i < matrixSize; i++) {
+		for (int j = 0; j < matrixSize; j++) {
+			cout << matrix[i][j] << " ";
+		}
+		cout << endl;
+	}
 
 	// Создаем расширенную матрицу
 	// Добавить идентификационную матрицу
 	// порядка в конце исходной матрицы.
 
-	for (int i = 0; i < order; i++) {
-		for (int j = 0; j < 2 * order; j++) {
+	for (int i = 0; i < matrixSize; i++) {
+		for (int j = 0; j < 2 * matrixSize; j++) {
 			// Добавить '1' в диагональных местах
 			// матрица для создания идентичности matirx
 
-			if (j == (i + order))
+			if (j == (i + matrixSize))
 				matrix[i][j] = 1;
 		}
 	}
@@ -351,7 +342,7 @@ void InverseOfMatrix(float matrix[][10], int order)
 	// Меняем строку матрицы,
 	// смена ряда начнется с последнего ряда
 
-	for (int i = order - 1; i > 0; i--) {
+	for (int i = matrixSize - 1; i > 0; i--) {
 		// Меняем местами каждый элемент двух строк
 		// if (matrix [i - 1] [0] <matrix [i] [0])
 		// for (int j = 0; j <2 * order; j ++) {
@@ -378,12 +369,12 @@ void InverseOfMatrix(float matrix[][10], int order)
 	// Заменить строку на сумму самого себя и
 	// константа, кратная другой строке матрицы
 
-	for (int i = 0; i < order; i++) {
-		for (int j = 0; j < order; j++) {
+	for (int i = 0; i < matrixSize; i++) {
+		for (int j = 0; j < matrixSize; j++) {
 			if (j != i) {
 				temp = matrix[j][i] / matrix[i][i];
 
-				for (int k = 0; k < 2 * order; k++) {
+				for (int k = 0; k < 2 * matrixSize; k++) {
 					matrix[j][k] -= matrix[i][k] * temp;
 				}
 			}
@@ -393,10 +384,10 @@ void InverseOfMatrix(float matrix[][10], int order)
 	// Умножаем каждую строку на ненулевое целое число.
 	// Делим элемент строки по диагональному элементу
 
-	for (int i = 0; i < order; i++) {
+	for (int i = 0; i < matrixSize; i++) {
 		temp = matrix[i][i];
 
-		for (int j = 0; j < 2 * order; j++) {
+		for (int j = 0; j < 2 * matrixSize; j++) {
 			matrix[i][j] = matrix[i][j] / temp;
 		}
 	}
@@ -404,34 +395,12 @@ void InverseOfMatrix(float matrix[][10], int order)
 	// выводим результирующую обратную матрицу.
 
 	cout << "\nОБРАТНАЯ МАТРИЦА\n";
-	PrintInverse(matrix, order, 2 * order);
-
-	return;
-}
-
-void inverse_matrix()
-{
-	//float matrix[10][10];
-	int matrixColumnSize, matrixLineSize;
-
-	//matrixEnter(matrix, matrixColumnSize, matrixLineSize);
-
-	//
-	int order;
-	// Порядок матрицы
-	// Матрица должна быть квадратной матрицей
-
-	order = 3;
-
-	float matrix[10][10] = { { 5, 7, 9 },
-							 { 4, 3, 8 },
-							 { 7, 5, 6 },
-							 { 1 }
-	};
-
-	InverseOfMatrix(matrix, order);
-
-	//matrixPrint(matrix, matrixColumnSize, matrixLineSize);
+	for (int i = 0; i < matrixSize; i++) {
+		for (int j = matrixSize; j < 2 * matrixSize; j++) {
+			cout << matrix[i][j] << " ";
+		}
+		cout << endl;
+	}
 
 	cout << endl;
 
