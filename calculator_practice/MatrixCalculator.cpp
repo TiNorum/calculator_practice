@@ -283,7 +283,7 @@ void matrix_transpose()
 void inverse_matrix()
 {
 	float matrix[10][10];
-	int matrixSize = 3;
+	int matrixSize;
 
 	matrixEnter(matrix, matrixSize, matrixSize, true);
 
@@ -294,7 +294,7 @@ void inverse_matrix()
 		}
 	}
 
-	for (int i = 0; i < matrixSize; i++) {
+	/*for (int i = 0; i < matrixSize; i++) {
 		for (int j = 0; j < 2 * matrixSize; j++) {
 			// Добавление 1 в диагональных местах
 			// матрицы для создания идентичности
@@ -311,7 +311,7 @@ void inverse_matrix()
 	float temp;
 
 	for (int i = matrixSize - 1; i > 0; i--) {
-		/*// Меняем местами каждый элемент двух строк
+		// Меняем местами каждый элемент двух строк
 		if (matrix [i - 1] [0] <matrix [i] [0])
 		for (int j = 0; j < 2 * matrixSize; j ++) {
 			// Перестановка строки, если выше
@@ -328,7 +328,7 @@ void inverse_matrix()
 			int temp = matrix[i][0];
 			matrix[i][0] = matrix[i - 1][0];
 			matrix[i - 1][0] = temp;
-		}*/
+		}
 	}
 
 	// Замена строки на сумму самой себя и
@@ -365,7 +365,7 @@ void inverse_matrix()
 			cout << matrix[i][j] << " ";
 		}
 		cout << endl;
-	}
+	}*/
 
 	cout << endl;
 
