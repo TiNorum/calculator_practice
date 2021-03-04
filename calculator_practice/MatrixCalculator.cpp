@@ -97,6 +97,48 @@ void matrixEnter(int (&matrixes)[10][10], int &matrixColumnSize, int &matrixLine
 	}
 }
 
+void matrixEnter(float(&matrixes)[10][10], int& matrixColumnSize, int& matrixLineSize, bool isMatrixSquare = false) {
+	if (isMatrixSquare) {
+		do {
+			cout << endl << "Введите размер матрицы: ";
+			cin >> matrixColumnSize;
+			if (matrixColumnSize < 1) {
+				cout << endl << "Размер не может быть меньше 1" << endl;
+			}
+		} while (matrixColumnSize < 1);
+
+		for (int i = 0; i < matrixColumnSize; i++) {
+			for (int j = 0; j < matrixColumnSize; j++) {
+				matrixes[i][j] = 0;
+			}
+		}
+	}
+	else {
+		do {
+			cout << endl << "Введите количество столбцов матрицы: ";
+			cin >> matrixColumnSize;
+			if (matrixColumnSize < 1) {
+				cout << endl << "Количество столбцов не может быть меньше 1" << endl;
+			}
+		} while (matrixColumnSize < 1);
+
+		do {
+			cout << endl << "Введите количество строк матрицы: ";
+			cin >> matrixLineSize;
+			if (matrixLineSize < 1) {
+				cout << endl << "Количество столбцов не может быть меньше 1" << endl;
+			}
+		} while (matrixLineSize < 1);
+
+
+		for (int i = 0; i < matrixColumnSize; i++) {
+			for (int j = 0; j < matrixLineSize; j++) {
+				matrixes[i][j] = 0;
+			}
+		}
+	}
+}
+
 void matrixPrint(int matrix[10][10], int matrixColumnSize, int matrixLineSize) {
 	cout << endl << "Итоговая матрица" << endl;
 	for (int i = 0; i < matrixColumnSize; i++) {
@@ -121,8 +163,7 @@ void addition_matrix()
 		cout << endl << "Введите матрицу" << endl;
 		for (int i = 0; i < matrixColumnSize; i++) {
 			for (int j = 0; j < matrixLineSize; j++) {
-				cin >> entryTempo;
-				matrix[i][j] += entryTempo;
+				cin >> matrix[i][j];
 			}
 		}
 	}
@@ -239,11 +280,10 @@ void matrix_transpose()
 	matrixPrint(matrix[1], matrixColumnSize, matrixLineSize);
 }
 
-
-void determinant()
+void inverse_matrix()
 {
-	int matrix[10][10];
-	int matrixSize;
+	float matrix[10][10];
+	int matrixSize = 3;
 
 	matrixEnter(matrix, matrixSize, matrixSize, true);
 
@@ -254,76 +294,13 @@ void determinant()
 		}
 	}
 
-	int p = 0, determinant = 0;
-	for (int i = 0; i < matrixSize - 1; i++)
-	{
-		int t = 1;
-		while (matrix[i][i] == 0)
-		{
-			for (int j = 0; j < matrixSize; j++)
-			{
-				matrix[i][j] = determinant;
-				matrix[i][j] = matrix[i + t][j];
-				matrix[i + t][j] = determinant;
-			}
-			p++;
-			t++;
-		}
-
-		for (int k = i + 1; k < matrixSize; k++)
-		{
-			determinant = matrix[k][i] / matrix[i][i];
-			for (int j = 0; j < matrixSize; j++)
-				matrix[k][j] -= matrix[i][j] * determinant;
-		}
-	}
-
-	determinant = pow(-1, p);
-
-	for (int i = 0; i < matrixSize; i++) {
-		determinant *= matrix[i][i];
-	}
-
-	cout << "Определитель равен: " << determinant;
-
-	cout << endl;
-
-	system("pause");
-}
-
-
-//-------------------------
-
-void inverse_matrix()
-{
-	//float matrix[10][10];
-	int matrixSize = 3;
-
-	//matrixEnter(matrix, matrixColumnSize, matrixLineSize);
-
-	//cout << "\nВведите размер матрицы\n";
-	//cin >> order;
-
-	float matrix[10][10] = { 
+	/*float matrix[10][10] = {
 		{ 5, 7, 9 },
 		{ 4, 3, 8 },
 		{ 7, 5, 6 }
-	};
+	};*/
 
 	// Матричная декларация.
-
-	float temp;
-
-	// PrintMatrix функция для печати элемента
-	// матрицы.
-
-	cout << "МАТРИЦА\n";
-	for (int i = 0; i < matrixSize; i++) {
-		for (int j = 0; j < matrixSize; j++) {
-			cout << matrix[i][j] << " ";
-		}
-		cout << endl;
-	}
 
 	// Создаем расширенную матрицу
 	// Добавить идентификационную матрицу
@@ -331,7 +308,7 @@ void inverse_matrix()
 
 	for (int i = 0; i < matrixSize; i++) {
 		for (int j = 0; j < 2 * matrixSize; j++) {
-			// Добавить '1' в диагональных местах
+			// Добавить 1 в диагональных местах
 			// матрица для создания идентичности matirx
 
 			if (j == (i + matrixSize))
@@ -341,6 +318,8 @@ void inverse_matrix()
 
 	// Меняем строку матрицы,
 	// смена ряда начнется с последнего ряда
+
+	float temp;
 
 	for (int i = matrixSize - 1; i > 0; i--) {
 		// Меняем местами каждый элемент двух строк
@@ -401,6 +380,57 @@ void inverse_matrix()
 		}
 		cout << endl;
 	}
+
+	cout << endl;
+
+	system("pause");
+}
+
+void determinant()
+{
+	int matrix[10][10];
+	int matrixSize;
+
+	matrixEnter(matrix, matrixSize, matrixSize, true);
+
+	cout << endl << "Введите матрицу" << endl;
+	for (int i = 0; i < matrixSize; i++) {
+		for (int j = 0; j < matrixSize; j++) {
+			cin >> matrix[i][j];
+		}
+	}
+
+	int p = 0, determinant = 0;
+	for (int i = 0; i < matrixSize - 1; i++)
+	{
+		int t = 1;
+		while (matrix[i][i] == 0)
+		{
+			for (int j = 0; j < matrixSize; j++)
+			{
+				matrix[i][j] = determinant;
+				matrix[i][j] = matrix[i + t][j];
+				matrix[i + t][j] = determinant;
+			}
+			p++;
+			t++;
+		}
+
+		for (int k = i + 1; k < matrixSize; k++)
+		{
+			determinant = matrix[k][i] / matrix[i][i];
+			for (int j = 0; j < matrixSize; j++)
+				matrix[k][j] -= matrix[i][j] * determinant;
+		}
+	}
+
+	determinant = pow(-1, p);
+
+	for (int i = 0; i < matrixSize; i++) {
+		determinant *= matrix[i][i];
+	}
+
+	cout << "Определитель равен: " << determinant;
 
 	cout << endl;
 
