@@ -97,7 +97,7 @@ void matrixEnter(int (&matrixes)[10][10], int &matrixColumnSize, int &matrixLine
 	}
 }
 
-void matrixEnter(float(&matrixes)[10][10], int& matrixColumnSize, int& matrixLineSize, bool isMatrixSquare = false) {
+void matrixEnter(float (&matrixes)[10][10], int& matrixColumnSize, int& matrixLineSize, bool isMatrixSquare = false) {
 	if (isMatrixSquare) {
 		do {
 			cout << endl << "¬ведите размер матрицы: ";
@@ -254,13 +254,6 @@ void multiplication_by_number()
 
 }
 
-void multiplication_with_number()
-{
-}
-
-void subtraction_with_number()
-{
-}
 
 void matrix_transpose()
 {
@@ -279,6 +272,7 @@ void matrix_transpose()
 
 	matrixPrint(matrix[1], matrixColumnSize, matrixLineSize);
 }
+
 
 void inverse_matrix()
 {
