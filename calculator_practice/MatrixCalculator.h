@@ -9,3 +9,6 @@ void multiplication_by_number();
 void matrix_transpose();
 void inverse_matrix();
 void determinant();
+void determin1ant();
+void determin2ant();
+void determina22nt();
