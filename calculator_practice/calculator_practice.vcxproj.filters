@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="ProbabilityTheory.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -59,5 +56,8 @@
     <ClInclude Include="PolynomialCalculator.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

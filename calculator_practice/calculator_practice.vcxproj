@@ -139,9 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="CalculatorObDrob.cpp" />
     <ClCompile Include="CombinatorialCalculator.cpp" />
     <ClCompile Include="Functions.cpp" />
@@ -157,6 +154,9 @@
     <ClInclude Include="MatrixCalculator.h" />
     <ClInclude Include="PolynomialCalculator.h" />
     <ClInclude Include="ProbabilityTheory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
