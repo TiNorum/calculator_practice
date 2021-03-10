@@ -3,35 +3,35 @@
 #include<SDL.h>
 #include<thread>
 
-//-------Размер окна-----
+//-------ГђГ Г§Г¬ГҐГ° Г®ГЄГ­Г -----
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
 
 
-/* Возращает значение функции при заданном X и коэфицентов */
+/* Г‚Г®Г§Г°Г Г№Г ГҐГІ Г§Г­Г Г·ГҐГ­ГЁГҐ ГґГіГ­ГЄГ¶ГЁГЁ ГЇГ°ГЁ Г§Г Г¤Г Г­Г­Г®Г¬ X ГЁ ГЄГ®ГЅГґГЁГ¶ГҐГ­ГІГ®Гў */
 double polynomial_degree_function(double x);
 double power_function(double x);
 double exponential_function(double x);
 double logarithmic_function(double x);
 double sinusoid_function(double x);
-double сosine_function(double x);
+double Г±osine_function(double x);
 
-/* Находим точки экстремума */
+/* ГЌГ ГµГ®Г¤ГЁГ¬ ГІГ®Г·ГЄГЁ ГЅГЄГ±ГІГ°ГҐГ¬ГіГ¬Г  */
 void find_extremums(double(*func)(double), double a, double b);
 
-/* Находим точки экстремума */
+/* ГЌГ ГµГ®Г¤ГЁГ¬ ГІГ®Г·ГЄГЁ ГЅГЄГ±ГІГ°ГҐГ¬ГіГ¬Г  */
 double simpson(double a, double b, int n);
-/* Рисует график с помощью библиотеки SDL */
+/* ГђГЁГ±ГіГҐГІ ГЈГ°Г ГґГЁГЄ Г± ГЇГ®Г¬Г®Г№ГјГѕ ГЎГЁГЎГ«ГЁГ®ГІГҐГЄГЁ SDL */
 int draw_graph(double (*func)(double));
 
-/* Нахождение y=0 на отрезке */
+/* ГЌГ ГµГ®Г¦Г¤ГҐГ­ГЁГҐ y=0 Г­Г  Г®ГІГ°ГҐГ§ГЄГҐ */
 void find_y0(double(*func)(double));
-/* Нахождение y=0 с помощью метода дихотомии */
+/* ГЌГ ГµГ®Г¦Г¤ГҐГ­ГЁГҐ y=0 Г± ГЇГ®Г¬Г®Г№ГјГѕ Г¬ГҐГІГ®Г¤Г  Г¤ГЁГµГ®ГІГ®Г¬ГЁГЁ */
 double dichotomy_method(double (*func)(double), double a, double b, double eps);
 
-/* Вычисление интеграла */
+/* Г‚Г»Г·ГЁГ±Г«ГҐГ­ГЁГҐ ГЁГ­ГІГҐГЈГ°Г Г«Г  */
 void integral(double(*func)(double));
-/* Нахождение интеграла с помощью метода Симпсона */
+/* ГЌГ ГµГ®Г¦Г¤ГҐГ­ГЁГҐ ГЁГ­ГІГҐГЈГ°Г Г«Г  Г± ГЇГ®Г¬Г®Г№ГјГѕ Г¬ГҐГІГ®Г¤Г  Г‘ГЁГ¬ГЇГ±Г®Г­Г  */
 double method_simpson(double (*f)(double), double a, double b, double h);
 
 void Menu_functions();
