@@ -140,7 +140,7 @@ void Comparing_fractions()
 	temp1 = f1.c * nok / f1.z;
 	temp2 = f2.c * nok / f2.z;
 
-	char c = temp1 > temp2 ? '>' : '<';
+	char c = temp1 == temp2 ? '=' : temp1 > temp2 ? '>' : '<';
 	print_fraction(f1, f2, c);
 }
 
