@@ -9,16 +9,16 @@ void Menu_calculator_ob_drob()
 	while (!quite)
 	{
 		system("cls");
-		cout << "\t\t\t����������� ������������ ������:" << endl;
-		cout << "1)�������� ������" << endl;
-		cout << "2)��������� ������" << endl;
-		cout << "3)��������� ������" << endl;
-		cout << "4)������� ������" << endl;
-		cout << "5)��������� ������" << endl;
-		cout << "6)���������� ������" << endl;
-		cout << "7)������������� � ���� ���������� �����" << endl;
-		cout << "0)�����" << endl;
-		cout << "�������� ����� �������: ";
+		cout << "\t\t\tКалькулятор обыкновенных дробей:" << endl;
+		cout << "1)Сложение дробей" << endl;
+		cout << "2)Вычитание дробей" << endl;
+		cout << "3)Умножение дробей" << endl;
+		cout << "4)Деление дробей" << endl;
+		cout << "5)Сравнение дробей" << endl;
+		cout << "6)Сокращение дробей" << endl;
+		cout << "7)Представление в виде десятичной дроби" << endl;
+		cout << "0)Выход" << endl;
+		cout << "Выберите номер задания: ";
 		unsigned short a;
 
 		cin >> a;
@@ -70,7 +70,7 @@ void Menu_calculator_ob_drob()
 			break;
 
 		}
-		
+
 	}
 
 }
@@ -138,9 +138,9 @@ void Comparing_fractions()
 	int nok = NOK(f1.z, f2.z);
 
 	temp1 = f1.c * nok / f1.z;
-	temp2 = f2.c* nok / f2.z;
+	temp2 = f2.c * nok / f2.z;
 
-	char c = temp1 > temp2 ? '>':'<';
+	char c = temp1 > temp2 ? '>' : '<';
 	print_fraction(f1, f2, c);
 }
 
@@ -170,13 +170,13 @@ void to_Decimal()
 }
 
 
-void print_fraction(fraction f1,fraction f2, fraction result, char sign)
+void print_fraction(fraction f1, fraction f2, fraction result, char sign)
 {
 	int ac1 = amount_chars(f1);
 	int ac2 = amount_chars(f2);
 	int ac3 = amount_chars(result);
 
-	cout << setw(ac1) << f1.c << "   " << setw(ac2) << f2.c << "   " << setw(ac3) << result.c <<endl;
+	cout << setw(ac1) << f1.c << "   " << setw(ac2) << f2.c << "   " << setw(ac3) << result.c << endl;
 
 	for (int i = 0; i < ac1; i++)
 		cout << '-';
@@ -194,7 +194,7 @@ void print_fraction(fraction f1,fraction f2, fraction result, char sign)
 }
 
 
-void print_fraction(fraction f1,  fraction f2, char sign)
+void print_fraction(fraction f1, fraction f2, char sign)
 {
 	int ac1 = amount_chars(f1);
 	int ac2 = amount_chars(f2);
@@ -223,22 +223,22 @@ void print_fraction(fraction f1, double result)
 	for (int i = 0; i < ac1; i++)
 		cout << '-';
 
-	cout <<   " = " << result<<endl;
+	cout << " = " << result << endl;
 
 	cout << setw(ac1) << f1.z << endl;
 }
 
 
-void enter_fraction(fraction &f1)
+void enter_fraction(fraction& f1)
 {
-	cout << "������� ��������� : ";
+	cout << "Введите числитель : ";
 	cin >> f1.c;
-	cout << "������� ����������� : ";
+	cout << "Введите знаменатель : ";
 	cin >> f1.z;
 	while (f1.z == 0)
 	{
-		cout << "����������� �� ����� ���� ����� 0!" << endl;
-		cout << "������� ����������� : ";
+		cout << "Знаменатель не может быть равен 0!" << endl;
+		cout << "Введите знаменатель : ";
 		cin >> f1.z;
 	}
 }
@@ -246,9 +246,9 @@ void enter_fraction(fraction &f1)
 
 void enter_fraction(fraction& f1, fraction& f2)
 {
-	cout << "������ �����."<<endl;
+	cout << "Первая дробь." << endl;
 	enter_fraction(f1);
-	cout << "������ �����." << endl;
+	cout << "Вторая дробь." << endl;
 	enter_fraction(f2);
 
 }
@@ -298,6 +298,6 @@ int amount_chars(fraction& f)
 		t /= 10;
 		count_2++;
 	}
-	
+
 	return count_1 > count_2 ? count_1 : count_2;
 }
