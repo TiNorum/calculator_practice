@@ -61,7 +61,6 @@ void Menu_matrix_calculator()
 			quite = true;
 			break;
 		}
-		system("Pause");
 	}
 }
 
@@ -106,6 +105,7 @@ void matrixPrint(Matrix matrix) {
 	}
 
 	cout << endl;
+	system("Pause");
 
 }
 
