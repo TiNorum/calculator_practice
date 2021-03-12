@@ -7,7 +7,7 @@ using namespace std;
 
 struct Matrix {
 	double array[MAX_ROW][MAX_COL]{};
-	int columnsAmount = 0, rowsAmount = 0;
+	int columnsAmount = 0, rowsAmount = 0, size = 0;
 };
 
 void Menu_matrix_calculator()
@@ -16,17 +16,17 @@ void Menu_matrix_calculator()
 	while (!quite)
 	{
 		system("cls");
-		cout << "\t\t\tМатричный калькултор:" << endl;
-		cout << "1)Сложение матриц" << endl;
-		cout << "2)Вычитание матриц" << endl;
-		cout << "3)Умножение матриц" << endl;
-		cout << "4)Умножение матриц на число" << endl;
-		cout << "5)Сложение матрицы с числом" << endl;
-		cout << "6)Транспонирование матрицы" << endl;
-		cout << "7)Обратная матрица" << endl;
-		cout << "8)Определитель" << endl;
-		cout << "0)Выход" << endl;
-		cout << "Выберите номер задания: ";
+		cout << "\t\t\tГЊГ ГІГ°ГЁГ·Г­Г»Г© ГЄГ Г«ГјГЄГіГ«ГїГІГ®Г°:" << endl;
+		cout << "1)Г‘Г«Г®Г¦ГҐГ­ГЁГҐ Г¬Г ГІГ°ГЁГ¶" << endl;
+		cout << "2)Г‚Г»Г·ГЁГІГ Г­ГЁГҐ Г¬Г ГІГ°ГЁГ¶" << endl;
+		cout << "3)Г“Г¬Г­Г®Г¦ГҐГ­ГЁГҐ Г¬Г ГІГ°ГЁГ¶" << endl;
+		cout << "4)Г“Г¬Г­Г®Г¦ГҐГ­ГЁГҐ Г¬Г ГІГ°ГЁГ¶ Г­Г  Г·ГЁГ±Г«Г®" << endl;
+		cout << "5)Г‘Г«Г®Г¦ГҐГ­ГЁГҐ Г¬Г ГІГ°ГЁГ¶Г» Г± Г·ГЁГ±Г«Г®Г¬" << endl;
+		cout << "6)Г’Г°Г Г­Г±ГЇГ®Г­ГЁГ°Г®ГўГ Г­ГЁГҐ Г¬Г ГІГ°ГЁГ¶Г»" << endl;
+		cout << "7)ГЋГЎГ°Г ГІГ­Г Гї Г¬Г ГІГ°ГЁГ¶Г " << endl;
+		cout << "8)ГЋГЇГ°ГҐГ¤ГҐГ«ГЁГІГҐГ«Гј" << endl;
+		cout << "0)Г‚Г»ГµГ®Г¤" << endl;
+		cout << "Г‚Г»ГЎГҐГ°ГЁГІГҐ Г­Г®Г¬ГҐГ° Г§Г Г¤Г Г­ГЁГї: ";
 		unsigned short a;
 
 		cin >> a;
@@ -64,38 +64,26 @@ void Menu_matrix_calculator()
 	}
 }
 
-void matrixEnter(Matrix& matrix, bool isMatrixSquare = false) {
-	if (isMatrixSquare) {
-		do {
-			cout << "Введите размер матрицы: ";
-			cin >> matrix.columnsAmount;
-			if (matrix.columnsAmount < 1 || matrix.columnsAmount> MAX_COL) {
-				cout << "Размер  может быть только от 1 до 20" << endl;
-			}
-		} while (matrix.columnsAmount < 1 || matrix.columnsAmount> MAX_COL);
-	}
-	else {
-		do {
-			cout << "Введите количество столбцов матрицы: " << endl;
-			cin >> matrix.columnsAmount;
-			if (matrix.columnsAmount < 1 || matrix.columnsAmount> MAX_COL) {
-				cout << "Размер  может быть только от 1 до 20" << endl;
-			}
-		} while (matrix.columnsAmount < 1 || matrix.columnsAmount> MAX_COL);
+void matrixEnter(Matrix& matrix) {
+	do {
+		cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±ГІГ®Г«ГЎГ¶Г®Гў Г¬Г ГІГ°ГЁГ¶Г»: ";
+		cin >> matrix.columnsAmount;
+		if (matrix.columnsAmount < 1 || matrix.columnsAmount> MAX_COL) {
+			cout << "\nГђГ Г§Г¬ГҐГ°  Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј ГІГ®Г«ГјГЄГ® Г®ГІ 1 Г¤Г® 20\n";
+		}
+	} while (matrix.columnsAmount < 1 || matrix.columnsAmount> MAX_COL);
 
-		do {
-			cout << "Введите количество строк матрицы: "<< endl;
-			cin >> matrix.rowsAmount;
-			if (matrix.rowsAmount < 1 || matrix.rowsAmount> MAX_ROW) {
-				cout << "Размер  может быть только от 1 до 20" << endl;
-			}
-		} while (matrix.rowsAmount < 1 || matrix.rowsAmount> MAX_ROW);
-	}
+	do {
+		cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±ГІГ°Г®ГЄ Г¬Г ГІГ°ГЁГ¶Г»: ";
+		cin >> matrix.rowsAmount;
+		if (matrix.rowsAmount < 1 || matrix.rowsAmount> MAX_ROW) {
+			cout << "\nГђГ Г§Г¬ГҐГ°  Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј ГІГ®Г«ГјГЄГ® Г®ГІ 1 Г¤Г® 20\n";
+		}
+	} while (matrix.rowsAmount < 1 || matrix.rowsAmount> MAX_ROW);
 }
 
 void matrixPrint(Matrix matrix) {
-
-	cout << "\nИтоговая матрица";
+	cout << "\nГ€ГІГ®ГЈГ®ГўГ Гї Г¬Г ГІГ°ГЁГ¶Г \n";
 
 	for (int i = 0; i < matrix.rowsAmount; i++) {
 		cout << endl;
@@ -105,6 +93,7 @@ void matrixPrint(Matrix matrix) {
 	}
 
 	cout << endl;
+
 	system("Pause");
 
 }
@@ -117,7 +106,7 @@ void addition_matrix()
 	matrixEnter(matrix);
 
 	for (int s = 0; s < 2; s++) {
-		cout << "Введите матрицу " << s + 1 << ":" << endl;
+		cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г¬Г ГІГ°ГЁГ¶Гі " << s + 1 << ":" << endl;
 		for (int i = 0; i < matrix.rowsAmount; i++) {
 			for (int j = 0; j < matrix.columnsAmount; j++) {
 				cin >> entryTempo;
@@ -136,12 +125,12 @@ void subtraction_matrix()
 
 	matrixEnter(matrix);
 
-	for (int s = 0; s < 2; s++) {
-		cout << "Введите матрицу " << s + 1 << ":" << endl;
+	for (int n = 0; n < 2; n++) {
+		cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г¬Г ГІГ°ГЁГ¶Гі " << n + 1 << ":" << endl;
 		for (int i = 0; i < matrix.rowsAmount; i++) {
 			for (int j = 0; j < matrix.columnsAmount; j++) {
 				cin >> entryTempo;
-				if (s == 0) {
+				if (n == 0) {
 					matrix.array[i][j] += entryTempo;
 				}
 				else {
@@ -159,20 +148,19 @@ void multiplication_matrix()
 	Matrix matrix[3];
 
 	do {
-		cout << "\nМатрица 1:\n";
-		matrixEnter(matrix[0]);
-
-		cout << "\nМатрица 2:\n";
-		matrixEnter(matrix[1]);
+		for (int n = 0; n < 2; n++) {
+			cout << "ГЊГ ГІГ°ГЁГ¶Г  " << n+1 <<":\n";
+			matrixEnter(matrix[n]);
+			cout << endl;
+		}
 
 		if (matrix[0].columnsAmount != matrix[1].rowsAmount) {
-			cout << "\nКоличество столбцов в первой матрице, должно совпадать с количеством строк во второй матрице\n";
+			cout << "\nГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±ГІГ®Г«ГЎГ¶Г®Гў Гў ГЇГҐГ°ГўГ®Г© Г¬Г ГІГ°ГЁГ¶ГҐ, Г¤Г®Г«Г¦Г­Г® Г±Г®ГўГЇГ Г¤Г ГІГј Г± ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ®Г¬ Г±ГІГ°Г®ГЄ ГўГ® ГўГІГ®Г°Г®Г© Г¬Г ГІГ°ГЁГ¶ГҐ\n";
 		}
 	} while (matrix[0].columnsAmount != matrix[1].rowsAmount);
 
-
 	for (int s = 0; s < 2; s++) {
-		cout << "Введите матрицу " << s + 1 << ":" << endl;
+		cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г¬Г ГІГ°ГЁГ¶Гі " << s + 1 << ":" << endl;
 		for (int i = 0; i < matrix[s].columnsAmount; i++) {
 			for (int j = 0; j < matrix[s].rowsAmount; j++) {
 				cin >> matrix[s].array[i][j];
@@ -188,8 +176,6 @@ void multiplication_matrix()
 		}
 	}
 
-	
-
 	matrix[2].columnsAmount = matrix[0].columnsAmount;
 	matrix[2].rowsAmount = matrix[1].rowsAmount;
 	matrixPrint(matrix[2]);
@@ -200,12 +186,13 @@ void multiplication_by_number()
 	Matrix matrix;
 	double number;
 
-	cout << "\nВведите число: ";
+	cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г·ГЁГ±Г«Г®: ";
 	cin >> number;
+	cout << endl;
 
 	matrixEnter(matrix);
 
-	cout << "\nВведите матрицу\n";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¬Г ГІГ°ГЁГ¶Гі\n";
 	for (int k = 0; k < matrix.columnsAmount; k++) {
 		for (int j = 0; j < matrix.rowsAmount; j++) {
 			cin >> matrix.array[k][j];
@@ -223,7 +210,7 @@ void matrix_transpose()
 
 	matrixEnter(matrix[0]);
 
-	cout << "\nВведите матрицу\n";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¬Г ГІГ°ГЁГ¶Гі\n";
 	for (int k = 0; k < matrix[0].rowsAmount; k++) {
 		for (int j = 0; j < matrix[0].columnsAmount; j++) {
 			cin >> matrix[0].array[k][j];
@@ -239,136 +226,138 @@ void matrix_transpose()
 void inverse_matrix()
 {
 	Matrix matrix;
+	do {
+		cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г°Г Г§Г¬ГҐГ° Г¬Г ГІГ°ГЁГ¶Г»: ";
+		cin >> matrix.size;
+		cout << endl;
+		if (matrix.size < 1) {
+			cout << "\nГђГ Г§Г¬ГҐГ° Г¬Г ГІГ°ГЁГ¶Г» Г­ГҐ Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј Г¬ГҐГ­ГјГёГҐ 1\n";
+		}
+	} while (matrix.size < 1);
 
-	matrixEnter(matrix, true);
-
-	cout << "\nВведите матрицу\n";
-	for (int i = 0; i < matrix.columnsAmount; i++) {
-		for (int j = 0; j < matrix.columnsAmount; j++) {
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¬Г ГІГ°ГЁГ¶Гі\n";
+	for (int i = 0; i < matrix.size; i++) {
+		for (int j = 0; j < matrix.size; j++) {
 			cin >> matrix.array[i][j];
 		}
 	}
 
-	/*for (int i = 0; i < matrixSize; i++) {
-		for (int j = 0; j < 2 * matrixSize; j++) {
-			// Добавление 1 в диагональных местах
-			// матрицы для создания идентичности
+	double temp;
+	double newMatrix[MAX_ROW][MAX_COL];
 
-			if (j == (i + matrixSize)) {
-				matrix[i][j] = 1;
+	for (int i = 0; i < matrix.size; i++) {
+		for (int j = 0; j < matrix.size; j++)
+		{
+			newMatrix[i][j] = 0;
+			if (i == j) {
+				newMatrix[i][j] = 1;
+			}				
+		}
+	}
+
+	for (int k = 0; k < matrix.size; k++) {
+		temp = matrix.array[k][k];
+
+		for (int j = 0; j < matrix.size; j++)
+		{
+			matrix.array[k][j] /= temp;
+			newMatrix[k][j] /= temp;
+		}
+
+		for (int i = k + 1; i < matrix.size; i++)
+		{
+			temp = matrix.array[i][k];
+
+			for (int j = 0; j < matrix.size; j++)
+			{
+				matrix.array[i][j] -= matrix.array[k][j] * temp;
+				newMatrix[i][j] -= newMatrix[k][j] * temp;
 			}
 		}
 	}
 
-	// Меняем строку матрицы,
-	// смена ряда начнется с последнего ряда
+	for (int k = matrix.size - 1; k > 0; k--) {
+		for (int i = k - 1; i >= 0; i--)
+		{
+			temp = matrix.array[i][k];
 
-	float temp;
-
-	for (int i = matrixSize - 1; i > 0; i--) {
-		// Меняем местами каждый элемент двух строк
-		if (matrix [i - 1] [0] <matrix [i] [0])
-		for (int j = 0; j < 2 * matrixSize; j ++) {
-			// Перестановка строки, если выше
-			// условие выполнено.
-
-			temp = matrix [i] [j];
-			matrix [i] [j] = matrix [i - 1] [j];
-			matrix [i - 1] [j] = temp;
-		}
-
-		// Прямой обмен строк с помощью указателей экономит время
-
-		if (matrix[i - 1][0] < matrix[i][0]) {
-			int temp = matrix[i][0];
-			matrix[i][0] = matrix[i - 1][0];
-			matrix[i - 1][0] = temp;
-		}
-	}
-
-	// Замена строки на сумму самой себя и
-	// константы, кратной другой строке матрицы
-
-	for (int i = 0; i < matrixSize; i++) {
-		for (int j = 0; j < matrixSize; j++) {
-			if (j != i) {
-				temp = matrix[j][i] / matrix[i][i];
-
-				for (int k = 0; k < 2 * matrixSize; k++) {
-					matrix[j][k] -= matrix[i][k] * temp;
-				}
+			for (int j = 0; j < matrix.size; j++)
+			{
+				matrix.array[i][j] -= matrix.array[k][j] * temp;
+				newMatrix[i][j] -= newMatrix[k][j] * temp;
 			}
 		}
 	}
 
-	// Умножаем каждую строку на ненулевое целое число.
-	// Делим элемент строки по диагональному элементу
-
-	for (int i = 0; i < matrixSize; i++) {
-		temp = matrix[i][i];
-
-		for (int j = 0; j < 2 * matrixSize; j++) {
-			matrix[i][j] = matrix[i][j] / temp;
-		}
-	}
-
-	//Выводим результирующую обратную матрицу.
-
-	cout << "\nОБРАТНАЯ МАТРИЦА\n";
-	for (int i = 0; i < matrixSize; i++) {
-		for (int j = matrixSize; j < 2 * matrixSize; j++) {
-			cout << matrix[i][j] << " ";
+	cout << "\nГЋГЎГ°Г ГІГ­Г Гї Г¬Г ГІГ°ГЁГ¶Г \n";
+	for (int i = 0; i < matrix.size; i++)
+	{
+		for (int j = 0; j < matrix.size; j++) {
+			cout << newMatrix[i][j] << "  ";
 		}
 		cout << endl;
-	}*/
+	}
+}
 
-	cout << endl;
+// Determinant
+
+void matrixWithoutRowAndCol(double matrix[MAX_ROW][MAX_COL], int size, int column, double newMatrix[MAX_ROW][MAX_COL]) {
+	int offsetCol = 0;
+	for (int i = 0; i < size - 1; i++) {
+		offsetCol = 0;
+		for (int j = 0; j < size - 1; j++) {
+			if (j == column) {
+				offsetCol = 1;
+			}
+			newMatrix[i][j] = matrix[i + 1][j + offsetCol];
+		}
+	}
+}
+
+double matrixDet(double matrix[MAX_ROW][MAX_COL], int size) {
+	double det = 0;
+	int degree = 1;
+
+	if (size == 1) {
+		return matrix[0][0];
+	}
+	else if (size == 2) {
+		return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+	}
+	else {
+		double newMatrix[MAX_ROW][MAX_COL];
+		for (int j = 0; j < size; j++) {
+			matrixWithoutRowAndCol(matrix, size, j, newMatrix);
+
+			det += degree * matrix[0][j] * matrixDet(newMatrix, size - 1);
+
+			degree = -degree;
+		}
+
+	}
+
+	return det;
 }
 
 void determinant()
 {
 	Matrix matrix;
-	int matrixSize;
+	do {
+		cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г°Г Г§Г¬ГҐГ° Г¬Г ГІГ°ГЁГ¶Г»: ";
+		cin >> matrix.size;
+		cout << endl;
+		if (matrix.size < 1) {
+			cout << "\nГђГ Г§Г¬ГҐГ° Г¬Г ГІГ°ГЁГ¶Г» Г­ГҐ Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј Г¬ГҐГ­ГјГёГҐ 1\n";
+		}
+	} while (matrix.size < 1);
 
-	matrixEnter(matrix, true);
-
-	cout << "\nВведите матрицу\n";
-	for (int i = 0; i < matrix.columnsAmount; i++) {
-		for (int j = 0; j < matrix.columnsAmount; j++) {
+	
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¬Г ГІГ°ГЁГ¶Гі\n";
+	for (int i = 0; i < matrix.size; i++) {
+		for (int j = 0; j < matrix.size; j++) {
 			cin >> matrix.array[i][j];
 		}
 	}
 
-	int p = 0, determinant = 0;
-	for (int i = 0; i < matrix.columnsAmount - 1; i++)
-	{
-		int t = 1;
-		while (matrix.array[i][i] == 0)
-		{
-			for (int j = 0; j < matrix.columnsAmount; j++)
-			{
-				matrix.array[i][j] = determinant;
-				matrix.array[i][j] = matrix.array[i + t][j];
-				matrix.array[i + t][j] = determinant;
-			}
-			p++;
-			t++;
-		}
-
-		for (int k = i + 1; k < matrix.columnsAmount; k++)
-		{
-			determinant = matrix.array[k][i] / matrix.array[i][i];
-			for (int j = 0; j < matrix.columnsAmount; j++)
-				matrix.array[k][j] -= matrix.array[i][j] * determinant;
-		}
-	}
-
-	determinant = pow(-1, p);
-
-	for (int i = 0; i < matrix.columnsAmount; i++) {
-		determinant *= matrix.array[i][i];
-	}
-
-	cout << "Определитель равен: " << determinant << endl;
-
+	cout << "ГЋГЇГ°ГҐГ¤ГҐГ«ГЁГІГҐГ«Гј Г°Г ГўГҐГ­: " << matrixDet(matrix.array, matrix.size) << endl;
 }
