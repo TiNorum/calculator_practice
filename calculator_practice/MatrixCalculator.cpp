@@ -16,7 +16,7 @@ void Menu_matrix_calculator()
 	while (!quite)
 	{
 		system("cls");
-		cout << "\t\t\tМатричный калькултор:" << endl;
+		cout << "\t\t\tМатричный калькулятор:" << endl;
 		cout << "1)Сложение матриц" << endl;
 		cout << "2)Вычитание матриц" << endl;
 		cout << "3)Умножение матриц" << endl;
@@ -67,18 +67,18 @@ void Menu_matrix_calculator()
 
 void matrixEnter(Matrix& matrix) {
 	do {
-		cout << "Введите количество столбцов матрицы: " << endl;
+		cout << "Введите количество столбцов матрицы: ";
 		cin >> matrix.columnsAmount;
 		if (matrix.columnsAmount < 1 || matrix.columnsAmount> MAX_COL) {
-			cout << "Размер  может быть только от 1 до 20" << endl;
+			cout << "\nРазмер  может быть только от 1 до 20\n";
 		}
 	} while (matrix.columnsAmount < 1 || matrix.columnsAmount> MAX_COL);
 
 	do {
-		cout << "Введите количество строк матрицы: "<< endl;
+		cout << "Введите количество строк матрицы: ";
 		cin >> matrix.rowsAmount;
 		if (matrix.rowsAmount < 1 || matrix.rowsAmount> MAX_ROW) {
-			cout << "Размер  может быть только от 1 до 20" << endl;
+			cout << "\nРазмер  может быть только от 1 до 20\n";
 		}
 	} while (matrix.rowsAmount < 1 || matrix.rowsAmount> MAX_ROW);
 }
@@ -147,8 +147,9 @@ void multiplication_matrix()
 
 	do {
 		for (int n = 0; n < 2; n++) {
-			cout << "\nМатрица " << n+1 <<":\n";
+			cout << "Матрица " << n+1 <<":\n";
 			matrixEnter(matrix[n]);
+			cout << endl;
 		}
 
 		if (matrix[0].columnsAmount != matrix[1].rowsAmount) {
@@ -183,8 +184,9 @@ void multiplication_by_number()
 	Matrix matrix;
 	double number;
 
-	cout << "\nВведите число: ";
+	cout << "Введите число: ";
 	cin >> number;
+	cout << endl;
 
 	matrixEnter(matrix);
 
