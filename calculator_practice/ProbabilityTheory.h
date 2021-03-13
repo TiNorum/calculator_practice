@@ -1,7 +1,8 @@
 #pragma once
 
-void Menu_probability__theory();
+void Menu_probability_theory();
 
-void Probability();
+void prob_1();
+void prob_2();
 void Variance();
 void Mat_waiting();

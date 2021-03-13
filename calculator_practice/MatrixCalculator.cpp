@@ -1,7 +1,5 @@
 #include "MatrixCalculator.h"
 #include <iostream>
-#define MAX_ROW 20
-#define MAX_COL 20
 
 using namespace std;
 
@@ -16,17 +14,16 @@ void Menu_matrix_calculator()
 	while (!quite)
 	{
 		system("cls");
-		cout << "\t\t\tÃŒÃ Ã²Ã°Ã¨Ã·Ã­Ã»Ã© ÃªÃ Ã«Ã¼ÃªÃ³Ã«Ã¿Ã²Ã®Ã°:" << endl;
-		cout << "1)Ã‘Ã«Ã®Ã¦Ã¥Ã­Ã¨Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶" << endl;
-		cout << "2)Ã‚Ã»Ã·Ã¨Ã²Ã Ã­Ã¨Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶" << endl;
-		cout << "3)Ã“Ã¬Ã­Ã®Ã¦Ã¥Ã­Ã¨Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶" << endl;
-		cout << "4)Ã“Ã¬Ã­Ã®Ã¦Ã¥Ã­Ã¨Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶ Ã­Ã  Ã·Ã¨Ã±Ã«Ã®" << endl;
-		cout << "5)Ã‘Ã«Ã®Ã¦Ã¥Ã­Ã¨Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã» Ã± Ã·Ã¨Ã±Ã«Ã®Ã¬" << endl;
-		cout << "6)Ã’Ã°Ã Ã­Ã±Ã¯Ã®Ã­Ã¨Ã°Ã®Ã¢Ã Ã­Ã¨Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»" << endl;
-		cout << "7)ÃŽÃ¡Ã°Ã Ã²Ã­Ã Ã¿ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã " << endl;
-		cout << "8)ÃŽÃ¯Ã°Ã¥Ã¤Ã¥Ã«Ã¨Ã²Ã¥Ã«Ã¼" << endl;
-		cout << "0)Ã‚Ã»ÃµÃ®Ã¤" << endl;
-		cout << "Ã‚Ã»Ã¡Ã¥Ã°Ã¨Ã²Ã¥ Ã­Ã®Ã¬Ã¥Ã° Ã§Ã Ã¤Ã Ã­Ã¨Ã¿: ";
+		cout << "\t\t\tÌàòðè÷íûé êàëüêóëÿòîð:" << endl;
+		cout << "1)Ñëîæåíèå ìàòðèö" << endl;
+		cout << "2)Âû÷èòàíèå ìàòðèö" << endl;
+		cout << "3)Óìíîæåíèå ìàòðèö" << endl;
+		cout << "4)Óìíîæåíèå ìàòðèö íà ÷èñëî" << endl;
+		cout << "5)Òðàíñïîíèðîâàíèå ìàòðèöû" << endl;
+		cout << "6)Îáðàòíàÿ ìàòðèöà" << endl;
+		cout << "7)Îïðåäåëèòåëü" << endl;
+		cout << "0)Âûõîä" << endl;
+		cout << "Âûáåðèòå íîìåð çàäàíèÿ: ";
 		unsigned short a;
 
 		cin >> a;
@@ -47,55 +44,51 @@ void Menu_matrix_calculator()
 			multiplication_by_number();
 			break;
 		case 5:
-			break;
-		case 6:
 			matrix_transpose();
 			break;
-		case 7:
+		case 6:
 			inverse_matrix();
 			break;
-		case 8:
+		case 7:
 			determinant();
 			break;
 		case 0:
 			quite = true;
 			break;
 		}
+		system("Pause");
 	}
 }
 
 void matrixEnter(Matrix& matrix) {
 	do {
-		cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ ÃªÃ®Ã«Ã¨Ã·Ã¥Ã±Ã²Ã¢Ã® Ã±Ã²Ã®Ã«Ã¡Ã¶Ã®Ã¢ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»: ";
+		cout << "Ââåäèòå êîëè÷åñòâî ñòîëáöîâ ìàòðèöû: ";
 		cin >> matrix.columnsAmount;
 		if (matrix.columnsAmount < 1 || matrix.columnsAmount> MAX_COL) {
-			cout << "\nÃÃ Ã§Ã¬Ã¥Ã°  Ã¬Ã®Ã¦Ã¥Ã² Ã¡Ã»Ã²Ã¼ Ã²Ã®Ã«Ã¼ÃªÃ® Ã®Ã² 1 Ã¤Ã® 20\n";
+			cout << "\nÐàçìåð  ìîæåò áûòü òîëüêî îò 1 äî 20\n";
 		}
 	} while (matrix.columnsAmount < 1 || matrix.columnsAmount> MAX_COL);
 
 	do {
-		cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ ÃªÃ®Ã«Ã¨Ã·Ã¥Ã±Ã²Ã¢Ã® Ã±Ã²Ã°Ã®Ãª Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»: ";
+		cout << "Ââåäèòå êîëè÷åñòâî ñòðîê ìàòðèöû: ";
 		cin >> matrix.rowsAmount;
 		if (matrix.rowsAmount < 1 || matrix.rowsAmount> MAX_ROW) {
-			cout << "\nÃÃ Ã§Ã¬Ã¥Ã°  Ã¬Ã®Ã¦Ã¥Ã² Ã¡Ã»Ã²Ã¼ Ã²Ã®Ã«Ã¼ÃªÃ® Ã®Ã² 1 Ã¤Ã® 20\n";
+			cout << "\nÐàçìåð  ìîæåò áûòü òîëüêî îò 1 äî 20\n";
 		}
 	} while (matrix.rowsAmount < 1 || matrix.rowsAmount> MAX_ROW);
 }
 
 void matrixPrint(Matrix matrix) {
-	cout << "\nÃˆÃ²Ã®Ã£Ã®Ã¢Ã Ã¿ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã \n";
+	cout << "Èòîãîâàÿ ìàòðèöà:"<<endl;
 
 	for (int i = 0; i < matrix.rowsAmount; i++) {
-		cout << endl;
 		for (int j = 0; j < matrix.columnsAmount; j++) {
 			cout << matrix.array[i][j] << " ";
 		}
+		cout << endl;
 	}
 
 	cout << endl;
-
-	system("Pause");
-
 }
 
 void addition_matrix()
@@ -106,7 +99,7 @@ void addition_matrix()
 	matrixEnter(matrix);
 
 	for (int s = 0; s < 2; s++) {
-		cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³ " << s + 1 << ":" << endl;
+		cout << "Ââåäèòå ìàòðèöó " << s + 1 << ":" << endl;
 		for (int i = 0; i < matrix.rowsAmount; i++) {
 			for (int j = 0; j < matrix.columnsAmount; j++) {
 				cin >> entryTempo;
@@ -126,7 +119,7 @@ void subtraction_matrix()
 	matrixEnter(matrix);
 
 	for (int n = 0; n < 2; n++) {
-		cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³ " << n + 1 << ":" << endl;
+		cout << "Ââåäèòå ìàòðèöó " << n + 1 << ":" << endl;
 		for (int i = 0; i < matrix.rowsAmount; i++) {
 			for (int j = 0; j < matrix.columnsAmount; j++) {
 				cin >> entryTempo;
@@ -149,18 +142,18 @@ void multiplication_matrix()
 
 	do {
 		for (int n = 0; n < 2; n++) {
-			cout << "ÃŒÃ Ã²Ã°Ã¨Ã¶Ã  " << n+1 <<":\n";
+			cout << "Ìàòðèöà " << n + 1 << ":\n";
 			matrixEnter(matrix[n]);
 			cout << endl;
 		}
 
 		if (matrix[0].columnsAmount != matrix[1].rowsAmount) {
-			cout << "\nÃŠÃ®Ã«Ã¨Ã·Ã¥Ã±Ã²Ã¢Ã® Ã±Ã²Ã®Ã«Ã¡Ã¶Ã®Ã¢ Ã¢ Ã¯Ã¥Ã°Ã¢Ã®Ã© Ã¬Ã Ã²Ã°Ã¨Ã¶Ã¥, Ã¤Ã®Ã«Ã¦Ã­Ã® Ã±Ã®Ã¢Ã¯Ã Ã¤Ã Ã²Ã¼ Ã± ÃªÃ®Ã«Ã¨Ã·Ã¥Ã±Ã²Ã¢Ã®Ã¬ Ã±Ã²Ã°Ã®Ãª Ã¢Ã® Ã¢Ã²Ã®Ã°Ã®Ã© Ã¬Ã Ã²Ã°Ã¨Ã¶Ã¥\n";
+			cout << "\nÊîëè÷åñòâî ñòîëáöîâ â ïåðâîé ìàòðèöå, äîëæíî ñîâïàäàòü ñ êîëè÷åñòâîì ñòðîê âî âòîðîé ìàòðèöå\n";
 		}
 	} while (matrix[0].columnsAmount != matrix[1].rowsAmount);
 
 	for (int s = 0; s < 2; s++) {
-		cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³ " << s + 1 << ":" << endl;
+		cout << "Ââåäèòå ìàòðèöó " << s + 1 << ":" << endl;
 		for (int i = 0; i < matrix[s].columnsAmount; i++) {
 			for (int j = 0; j < matrix[s].rowsAmount; j++) {
 				cin >> matrix[s].array[i][j];
@@ -186,13 +179,13 @@ void multiplication_by_number()
 	Matrix matrix;
 	double number;
 
-	cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã·Ã¨Ã±Ã«Ã®: ";
+	cout << "Ââåäèòå ÷èñëî: ";
 	cin >> number;
 	cout << endl;
 
 	matrixEnter(matrix);
 
-	cout << "\nÃ‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³\n";
+	cout << "\nÂâåäèòå ìàòðèöó\n";
 	for (int k = 0; k < matrix.columnsAmount; k++) {
 		for (int j = 0; j < matrix.rowsAmount; j++) {
 			cin >> matrix.array[k][j];
@@ -210,7 +203,7 @@ void matrix_transpose()
 
 	matrixEnter(matrix[0]);
 
-	cout << "\nÃ‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³\n";
+	cout << "\nÂâåäèòå ìàòðèöó\n";
 	for (int k = 0; k < matrix[0].rowsAmount; k++) {
 		for (int j = 0; j < matrix[0].columnsAmount; j++) {
 			cin >> matrix[0].array[k][j];
@@ -227,19 +220,25 @@ void inverse_matrix()
 {
 	Matrix matrix;
 	do {
-		cout << "\nÃ‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã°Ã Ã§Ã¬Ã¥Ã° Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»: ";
+		cout << "Ââåäèòå ðàçìåð ìàòðèöû: ";
 		cin >> matrix.size;
-		cout << endl;
+	
 		if (matrix.size < 1) {
-			cout << "\nÃÃ Ã§Ã¬Ã¥Ã° Ã¬Ã Ã²Ã°Ã¨Ã¶Ã» Ã­Ã¥ Ã¬Ã®Ã¦Ã¥Ã² Ã¡Ã»Ã²Ã¼ Ã¬Ã¥Ã­Ã¼Ã¸Ã¥ 1\n";
+			cout << "Ðàçìåð ìàòðèöû íå ìîæåò áûòü ìåíüøå 1"<<endl;
 		}
 	} while (matrix.size < 1);
 
-	cout << "\nÃ‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³\n";
+	cout << "Ââåäèòå ìàòðèöó:" << endl;
 	for (int i = 0; i < matrix.size; i++) {
 		for (int j = 0; j < matrix.size; j++) {
 			cin >> matrix.array[i][j];
 		}
+	}
+
+	if (matrixDet(matrix.array, matrix.size) == 0)
+	{
+		cout << endl << "Îáðàòíóþ ìàòðèöó íåâîçìîæíî íàéòè, òàê êàê äåòåðìèíàíò ìàòðèöû ðàâåí íóëþ." << endl << endl;
+		return;
 	}
 
 	double temp;
@@ -251,7 +250,7 @@ void inverse_matrix()
 			newMatrix[i][j] = 0;
 			if (i == j) {
 				newMatrix[i][j] = 1;
-			}				
+			}
 		}
 	}
 
@@ -289,7 +288,7 @@ void inverse_matrix()
 		}
 	}
 
-	cout << "\nÃŽÃ¡Ã°Ã Ã²Ã­Ã Ã¿ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã \n";
+	cout << "\nÎáðàòíàÿ ìàòðèöà\n";
 	for (int i = 0; i < matrix.size; i++)
 	{
 		for (int j = 0; j < matrix.size; j++) {
@@ -343,21 +342,20 @@ void determinant()
 {
 	Matrix matrix;
 	do {
-		cout << "\nÃ‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã°Ã Ã§Ã¬Ã¥Ã° Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»: ";
+		cout << "Ââåäèòå ðàçìåð ìàòðèöû: ";
 		cin >> matrix.size;
-		cout << endl;
 		if (matrix.size < 1) {
-			cout << "\nÃÃ Ã§Ã¬Ã¥Ã° Ã¬Ã Ã²Ã°Ã¨Ã¶Ã» Ã­Ã¥ Ã¬Ã®Ã¦Ã¥Ã² Ã¡Ã»Ã²Ã¼ Ã¬Ã¥Ã­Ã¼Ã¸Ã¥ 1\n";
+			cout << "Ðàçìåð ìàòðèöû íå ìîæåò áûòü ìåíüøå 1.\n";
 		}
 	} while (matrix.size < 1);
 
-	
-	cout << "\nÃ‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³\n";
+
+	cout << "Ââåäèòå ìàòðèöó:" <<endl;
 	for (int i = 0; i < matrix.size; i++) {
 		for (int j = 0; j < matrix.size; j++) {
 			cin >> matrix.array[i][j];
 		}
 	}
 
-	cout << "ÃŽÃ¯Ã°Ã¥Ã¤Ã¥Ã«Ã¨Ã²Ã¥Ã«Ã¼ Ã°Ã Ã¢Ã¥Ã­: " << matrixDet(matrix.array, matrix.size) << endl;
+	cout << "Îïðåäåëèòåëü ðàâåí: " << matrixDet(matrix.array, matrix.size) << endl;
 }

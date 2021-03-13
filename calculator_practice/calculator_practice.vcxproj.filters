@@ -30,10 +30,10 @@
     <ClCompile Include="Functions.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="MatrixCalculator.cpp">
+    <ClCompile Include="PolynomialCalculator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="PolynomialCalculator.cpp">
+    <ClCompile Include="MatrixCalculator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

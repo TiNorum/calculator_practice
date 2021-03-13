@@ -1,6 +1,9 @@
 #pragma once
+#include<iostream>
 
 void Menu_polynomial_calculator();
+
+
 
 void div_poly();
 void sum_poly();

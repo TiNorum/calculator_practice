@@ -11,10 +11,9 @@ int Ay = -10, By = 10; // - промежуток по Оу
 
 /* Коэфициенты функций */
 double A, B, C, D;
-double* array_A; // - в случае полином степени N нужен нужен массив для аргументов А0...An;
+double* array_A = NULL; // - в случае полином степени N нужен нужен массив для аргументов А0...An;
 double N; // - количество слагаемых в полиноме степени
 double сosine_function(double x);
-
 
 
 void Menu_functions()
@@ -74,11 +73,14 @@ void Menu_functions()
 					std::cin >> N;
 				}
 				
+				if (array_A != NULL)
+					delete[] array_A;
+
 				array_A = new double[N];
 
 				for (int i = 0; i < N; i++)
 				{
-					std::cout << "Введите A[" << i << "]: ";
+					std::cout << "Введите a[" << i << "]: ";
 					std::cin >> array_A[i];
 				}
 
@@ -189,7 +191,6 @@ void Menu_functions()
 		}
 	}
 
-	delete[] array_A;
 }
 
 
@@ -241,6 +242,8 @@ void event_handling(SDL_Event* event)
 {
 	int coord_mous_click_x = -1, coord_mous_click_y = -1;
 	bool b = false;
+	bool ctrl_press = false;
+
 	while (!quit)
 	{
 		switch (event->type)
@@ -251,12 +254,23 @@ void event_handling(SDL_Event* event)
 		case SDL_WINDOWEVENT:
 			break;
 		case SDL_MOUSEWHEEL:
-			if (Ax - event->wheel.y * 10 < Bx + event->wheel.y * 10)
+			if (ctrl_press)
 			{
-				Ax -= event->wheel.y * 10;
-				Bx += event->wheel.y * 10;
-
+				if (Ay - event->wheel.y * 10 < Bx + event->wheel.y * 10)
+				{
+					Ay -= event->wheel.y * 10;
+					By += event->wheel.y * 10;
+				}
 			}
+			else
+			{
+				if (Ax - event->wheel.y * 10 < Bx + event->wheel.y * 10)
+				{
+					Ax -= event->wheel.y * 10;
+					Bx += event->wheel.y * 10;
+				}
+			}
+			
 			event->type = NULL;
 			break;
 		case SDL_MOUSEBUTTONDOWN:
@@ -266,9 +280,18 @@ void event_handling(SDL_Event* event)
 			b = false;
 			event->type = NULL;
 			break;
+		case SDL_KEYDOWN:
+			ctrl_press = event->key.keysym.scancode == SDL_SCANCODE_LCTRL;
+			event->type = NULL;
+			break;
+
+		case SDL_KEYUP:
+			ctrl_press = !(event->key.keysym.scancode == SDL_SCANCODE_LCTRL);
+			event->type = NULL;
+			break;
+
 		case SDL_MOUSEMOTION:
 			if (!b)   break;
-
 
 			if (!(event->motion.xrel > SCREEN_WIDTH || event->motion.yrel > SCREEN_HEIGHT))
 			{
@@ -409,22 +432,24 @@ double dichotomy_method(double(*func)(double), double a, double b, double eps)
 
 void find_extremums(double(*func)(double), double a, double b)
 {
-	float step = 0.001;
-	bool f = func(a) > func(a + step);
-	double y1, y2;
+	float step = 0.0001;
+	double min = a, max = a;
 
-	for (float i = a; i < b; i += step)
+	for (double i = a+step; i <= b ; i += step)
 	{
-		y1 = func(i);
-		y2 = func(i + step);
-
-		if ( (y2 -y1) / step > 0.0001)
-		{
-			std::cout << "x = " << i << std::endl;
-		}
-		
+		if (func(i) <= func(min))
+			min = i;
+		else if (func(i) >= func(max))
+			max = i;
 	}
 
+	std::cout << "Значение глобального минимума на отрезке [" << a << ", " << b << "]:" << std::endl;
+	std::cout << "x = " << min << std::endl;
+	std::cout << "y = " << func(min) << std::endl;
+
+	std::cout << "Значение глобального максимума на отрезке [" << a << ", " << b << "]:" << std::endl;
+	std::cout << "x = " << max << std::endl;
+	std::cout << "y = " << func(max) << std::endl;
 }
 
 

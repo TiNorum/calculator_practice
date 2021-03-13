@@ -43,7 +43,7 @@ int  main(int argc, char* argv[])
 			Menu_polynomial_calculator();
 			break;
 		case 5:
-			Menu_probability__theory();
+			Menu_probability_theory();
 			break;
 		case 6:
 			Menu_functions();
